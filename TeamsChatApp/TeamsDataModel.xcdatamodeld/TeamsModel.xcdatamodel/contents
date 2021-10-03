@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H524" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES" codeGenerationType="class">
+        <attribute name="message_type" optional="YES" attributeType="String"/>
+        <attribute name="msg_id" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="messageSedner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users"/>
+        <relationship name="msgAttachements" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MsgAttachments"/>
+    </entity>
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="group_id" optional="YES" attributeType="String"/>
+        <attribute name="group_name" optional="YES" attributeType="String"/>
+        <relationship name="msgList" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ChatMessage"/>
+    </entity>
+    <entity name="MsgAttachments" representedClassName="MsgAttachments" syncable="YES" codeGenerationType="class">
+        <attribute name="file_name" optional="YES" attributeType="String"/>
+        <attribute name="file_path" optional="YES" attributeType="String"/>
+        <attribute name="file_type" optional="YES" attributeType="String"/>
+        <attribute name="msg_id" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="UserGroups" representedClassName="UserGroups" syncable="YES" codeGenerationType="class">
+        <attribute name="user_name" optional="YES" attributeType="String"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Group"/>
+    </entity>
+    <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="usern_name" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ChatMessage" positionX="-206.921875" positionY="72.765625" width="128" height="118"/>
+        <element name="Group" positionX="59.6640625" positionY="-84.421875" width="128" height="88"/>
+        <element name="MsgAttachments" positionX="0" positionY="45" width="128" height="103"/>
+        <element name="UserGroups" positionX="204.9921875" positionY="216.0703125" width="128" height="73"/>
+        <element name="Users" positionX="-103.21484375" positionY="-284.7734375" width="128" height="73"/>
+    </elements>
+</model>
